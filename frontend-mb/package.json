@@ -1,0 +1,39 @@
+{
+  "name": "frontend-mb",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^7.6.7",
+    "@capacitor/core": "^8.4.1",
+    "@element-plus/icons-vue": "^2.3.1",
+    "@vueuse/core": "^13.0.0",
+    "axios": "^1.8.4",
+    "element-plus": "^2.9.7",
+    "lucide-vue-next": "^0.487.0",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "vite": "^5.4.21"
+  },
+  "browserslist": [
+    "Android >= 5",
+    "iOS >= 10",
+    "Chrome >= 60",
+    "Safari >= 10",
+    "last 2 versions"
+  ]
+}
