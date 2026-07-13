@@ -31,6 +31,18 @@
         </div>
         <div class="chevron">›</div>
       </div>
+      <a class="menu-row download-row" href="/app-debug.apk" download>
+        <div class="menu-row-left">
+          <div class="menu-icon" style="background: var(--lime-soft); color: var(--lime);">
+            <Download class="icon-svg" />
+          </div>
+          <div>
+            <div class="menu-title">下载应用</div>
+            <div class="menu-desc">安装 Android 测试版 APK</div>
+          </div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
     </div>
 
     <button class="btn-logout" @click="handleLogout">退出登录</button>
@@ -44,6 +56,7 @@ import {
   Money,
   User,
   Setting,
+  Download,
 } from '@element-plus/icons-vue'
 
 const emit = defineEmits(['navigate'])
@@ -228,5 +241,10 @@ const handleLogout = () => {
 
 .btn-logout:active {
   background: #fee2e2;
+}
+
+.download-row {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
