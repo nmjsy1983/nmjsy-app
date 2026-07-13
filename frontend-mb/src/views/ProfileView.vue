@@ -70,10 +70,24 @@
             <div class="menu-icon" style="background: var(--amber-soft); color: var(--amber);">
               <Bell class="icon-svg" />
             </div>
-            <div class="menu-item-title">消息通知</div>
+            <div>
+              <div class="menu-item-title">消息通知</div>
+            </div>
           </div>
           <div class="chevron">›</div>
         </div>
+        <a class="menu-item download-link" href="/app-debug.apk" download>
+          <div class="menu-item-left">
+            <div class="menu-icon" style="background: var(--lime-soft); color: var(--lime);">
+              <Download class="icon-svg" />
+            </div>
+            <div>
+              <div class="menu-item-title">下载应用</div>
+              <div class="menu-item-desc">安装 Android 测试版 APK</div>
+            </div>
+          </div>
+          <div class="chevron">›</div>
+        </a>
       </div>
 
       <button class="btn-logout" @click="handleLogout">退出登录</button>
@@ -84,7 +98,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { Money, User, Setting, Tools, Bell } from '@element-plus/icons-vue'
+import { Money, User, Setting, Tools, Bell, Download } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -256,5 +270,10 @@ const handleLogout = () => {
 
 .btn-logout:active {
   background: #fee2e2;
+}
+
+.download-link {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

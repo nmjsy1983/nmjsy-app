@@ -1,0 +1,24 @@
+# 备份产物（手动备份存放处，不入库）
+backups/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+.mypy_cache/
+
+# Node / 前端构建
+node_modules/
+dist/
+*.apk
+frontend-mb/public/*.apk
+
+# 日志
+*.log
+
+# 本地环境
+.env.local
+
+# 后端运行期上传文件（G5 文件/图片上传端点写入，不入库）
+backend/uploads/
