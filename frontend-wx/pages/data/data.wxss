@@ -1,0 +1,67 @@
+.summary-cards {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.summary-card {
+  flex: 1;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32rpx 24rpx;
+  text-align: center;
+  border: 1rpx solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.summary-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8rpx;
+}
+
+.summary-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.data-grid {
+  padding: 28rpx;
+}
+
+.data-grid-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 24rpx;
+}
+
+.data-grid-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24rpx;
+}
+
+.data-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.data-grid-icon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.data-grid-name {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  text-align: center;
+}

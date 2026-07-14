@@ -1,0 +1,41 @@
+<view class="container">
+  <!-- 顶部统一 header -->
+  <view class="app-header">
+    <view class="app-header-left">
+      <view class="app-logo">N</view>
+      <view class="app-name">nmjsy</view>
+    </view>
+    <view class="app-header-right">
+      <view class="quick-link" data-name="日报" bindtap="onReportTap">日报</view>
+      <view class="quick-link" data-name="周报" bindtap="onReportTap">周报</view>
+      <view class="quick-link" data-name="报销" bindtap="onReportTap">报销</view>
+    </view>
+  </view>
+
+  <!-- 内容区 -->
+  <view class="page-content">
+    <view class="welcome-card">
+      <view class="welcome-title">欢迎使用 nmjsy</view>
+      <view class="welcome-desc">微信小程序演示版</view>
+    </view>
+
+    <view 
+      class="card home-card" 
+      wx:for="{{cards}}" 
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onCardTap"
+    >
+      <view class="card-header">
+        <view class="home-card-title">
+          <view class="home-card-icon" style="background: {{item.bg}}; color: {{item.color}};">{{item.icon}}</view>
+          <text>{{item.title}}</text>
+        </view>
+        <view class="chevron">›</view>
+      </view>
+      <view class="card-body">
+        <view class="home-card-content">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+</view>

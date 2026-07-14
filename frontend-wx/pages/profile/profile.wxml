@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="app-header">
+    <view class="app-header-left">
+      <view class="app-logo">N</view>
+      <view class="app-name">我的</view>
+    </view>
+  </view>
+
+  <view class="page-content">
+    <view class="user-card">
+      <view class="user-avatar">{{userInfo.name[0]}}</view>
+      <view class="user-info">
+        <view class="user-name">{{userInfo.name}}</view>
+        <view class="user-meta">{{userInfo.role}} · {{userInfo.phone}}</view>
+      </view>
+    </view>
+
+    <view class="menu-group" wx:for="{{menuGroups}}" wx:key="title">
+      <view class="menu-group-title">{{item.title}}</view>
+      <view class="card menu-card">
+        <view 
+          class="menu-row"
+          wx:for="{{item.items}}"
+          wx:key="key"
+          wx:for-item="menu"
+          wx:for-index="idx"
+          data-key="{{menu.key}}"
+          bindtap="onMenuTap"
+        >
+          <view class="menu-row-left">
+            <view class="menu-icon" style="background: {{menu.bg}}; color: {{menu.color}};">{{menu.icon}}</view>
+            <view>
+              <view class="menu-title">{{menu.title}}</view>
+              <view class="menu-desc">{{menu.desc}}</view>
+            </view>
+          </view>
+          <view class="chevron">›</view>
+        </view>
+      </view>
+    </view>
+
+    <button class="logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+.welcome-card {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-radius: var(--radius);
+  padding: 40rpx 32rpx;
+  margin-bottom: 32rpx;
+  border: 1rpx solid #fed7aa;
+}
+
+.welcome-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8rpx;
+}
+
+.welcome-desc {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.home-card {
+  transition: transform 0.15s;
+}
+
+.home-card:active {
+  transform: scale(0.98);
+}
+
+.home-card-title {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.home-card-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.home-card-content {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.chevron {
+  font-size: 36rpx;
+  color: var(--text-muted);
+}

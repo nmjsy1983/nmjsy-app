@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/approval/approval",
+    "pages/data/data",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fbf9f6",
+    "navigationBarTitleText": "nmjsy",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fbf9f6",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#a8a29e",
+    "selectedColor": "#c2410c",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/approval/approval",
+        "text": "审批"
+      },
+      {
+        "pagePath": "pages/data/data",
+        "text": "数据"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
