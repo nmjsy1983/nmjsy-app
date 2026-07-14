@@ -5,10 +5,29 @@
     <view class="page-title">
       <view class="date-weather">
         <text class="date-text">{{dateStr}} {{weekStr}}</text>
+        <text class="split-dot">·</text>
+        <text class="lunar-text">{{lunarStr}}</text>
+        <text class="split-dot">·</text>
         <text class="weather-text">{{weather}}</text>
       </view>
       <view class="edit-btn {{isEditing ? 'active' : ''}}" bindtap="toggleEdit">
         {{isEditing ? '完成' : '编辑'}}
+      </view>
+    </view>
+
+    <view class="card notice-card">
+      <view class="card-header">
+        <text class="card-title">通知公告</text>
+        <text class="card-more">全部 ›</text>
+      </view>
+      <view class="notice-list">
+        <view class="notice-item" wx:for="{{notices}}" wx:key="id" data-id="{{item.id}}" bindtap="onNoticeTap">
+          <view class="notice-dot"></view>
+          <view class="notice-content">
+            <view class="notice-title">{{item.title}}</view>
+            <view class="notice-time">{{item.time}}</view>
+          </view>
+        </view>
       </view>
     </view>
 

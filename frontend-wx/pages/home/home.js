@@ -16,6 +16,7 @@ Page({
     userName: '管理员',
     dateStr: '',
     weekStr: '',
+    lunarStr: '',
     weather: '晴 26°C',
     isEditing: false,
     visibleCards: [...allCardKeys],
@@ -32,7 +33,12 @@ Page({
       reimbursePending: 2,
       reimburseApproved: 3,
       reimbursePaid: 1
-    }
+    },
+    notices: [
+      { id: 1, title: '关于 7 月份报销截止日期的通知', time: '今天 09:30' },
+      { id: 2, title: 'A 项目工期调整，请及时更新记工记录', time: '昨天 16:45' },
+      { id: 3, title: '新员工入职培训安排', time: '2026-07-12' }
+    ]
   },
 
   onLoad() {
@@ -49,9 +55,11 @@ Page({
     const d = new Date()
     const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
     const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+    const lunar = require('../../utils/lunar.js').solarToLunar(d)
     this.setData({
       dateStr: `${months[d.getMonth()]}${d.getDate()}日`,
       weekStr: weeks[d.getDay()],
+      lunarStr: lunar.text,
       weather: '晴 26°C',
       userName: '管理员'
     })
@@ -103,5 +111,10 @@ Page({
     const key = e.currentTarget.dataset.key
     if (this.data.isEditing) return
     wx.showToast({ title: `打开 ${cardMap[key].title}`, icon: 'none' })
+  },
+
+  onNoticeTap(e) {
+    const id = e.currentTarget.dataset.id
+    wx.showToast({ title: `查看公告 ${id}`, icon: 'none' })
   }
 })
