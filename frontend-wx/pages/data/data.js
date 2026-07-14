@@ -12,6 +12,12 @@ Page({
     ]
   },
 
+  onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 2 })
+    }
+  },
+
   onModuleTap(e) {
     const name = e.currentTarget.dataset.name
     wx.showToast({ title: `打开 ${name}`, icon: 'none' })

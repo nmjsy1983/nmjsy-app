@@ -1,0 +1,80 @@
+.global-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  height: 92rpx;
+  padding: 0 32rpx;
+  padding-top: 88rpx;
+  background: var(--bg);
+  border-bottom: 1rpx solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 14rpx;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-name {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: var(--text-main);
+  width: 4.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.quick-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12rpx;
+  flex: 1;
+  min-width: 0;
+}
+
+.link-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72rpx;
+  padding: 10rpx 18rpx;
+  border-radius: 14rpx;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 26rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.link-block:active {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(0.96);
+}

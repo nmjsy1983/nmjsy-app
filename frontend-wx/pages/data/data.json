@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "global-header": "/components/global-header/global-header"
+  },
   "navigationStyle": "custom"
 }

@@ -1,40 +1,149 @@
 <view class="container">
-  <!-- 顶部统一 header -->
-  <view class="app-header">
-    <view class="app-header-left">
-      <view class="app-logo">N</view>
-      <view class="app-name">nmjsy</view>
-    </view>
-    <view class="app-header-right">
-      <view class="quick-link" data-name="日报" bindtap="onReportTap">日报</view>
-      <view class="quick-link" data-name="周报" bindtap="onReportTap">周报</view>
-      <view class="quick-link" data-name="报销" bindtap="onReportTap">报销</view>
-    </view>
-  </view>
+  <global-header />
 
-  <!-- 内容区 -->
   <view class="page-content">
-    <view class="welcome-card">
-      <view class="welcome-title">欢迎使用 nmjsy</view>
-      <view class="welcome-desc">微信小程序演示版</view>
+    <view class="page-title">
+      <view>
+        <view class="greeting">早安，{{userName}}</view>
+        <view class="date">{{today}}</view>
+      </view>
+      <view class="edit-btn {{isEditing ? 'active' : ''}}" bindtap="toggleEdit">
+        {{isEditing ? '完成' : '编辑'}}
+      </view>
     </view>
 
     <view 
-      class="card home-card" 
-      wx:for="{{cards}}" 
-      wx:key="key"
-      data-key="{{item.key}}"
+      class="card-wrapper {{isEditing ? 'editing' : ''}}"
+      wx:for="{{visibleCards}}"
+      wx:key="*this"
+      data-key="{{item}}"
       bindtap="onCardTap"
     >
-      <view class="card-header">
-        <view class="home-card-title">
-          <view class="home-card-icon" style="background: {{item.bg}}; color: {{item.color}};">{{item.icon}}</view>
-          <text>{{item.title}}</text>
+      <view wx:if="{{isEditing}}" class="sort-bar">
+        <text class="sort-title">{{cardMap[item].title}}</text>
+        <view class="sort-actions">
+          <view class="sort-btn {{index === 0 ? 'disabled' : ''}}" data-index="{{index}}" bindtap="moveUp">↑</view>
+          <view class="sort-btn {{index === visibleCards.length - 1 ? 'disabled' : ''}}" data-index="{{index}}" bindtap="moveDown">↓</view>
+          <view class="sort-btn close" data-key="{{item}}" bindtap="hideCard">×</view>
         </view>
-        <view class="chevron">›</view>
       </view>
-      <view class="card-body">
-        <view class="home-card-content">{{item.content}}</view>
+
+      <!-- 今日/本月收支 -->
+      <view wx:if="{{cardMap[item].type === 'summary'}}" class="card summary-card">
+        <view class="card-header">
+          <text class="card-title">{{cardMap[item].title}}</text>
+          <text wx:if="{{!isEditing}}" class="card-more">›</text>
+        </view>
+        <view class="card-body">
+          <view class="summary-row">
+            <view class="summary-item">
+              <view class="summary-label">收入</view>
+              <view class="summary-value income">¥ {{item === 'today' ? stats.todayIncome : stats.monthIncome}}</view>
+            </view>
+            <view class="summary-divider"></view>
+            <view class="summary-item">
+              <view class="summary-label">支出</view>
+              <view class="summary-value expense">¥ {{item === 'today' ? stats.todayExpense : stats.monthExpense}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 关键指标 -->
+      <view wx:elif="{{cardMap[item].type === 'kpi'}}" class="card kpi-card">
+        <view class="card-header">
+          <text class="card-title">{{cardMap[item].title}}</text>
+          <text wx:if="{{!isEditing}}" class="card-more">›</text>
+        </view>
+        <view class="card-body">
+          <view class="kpi-grid">
+            <view class="kpi-item">
+              <view class="kpi-value">{{stats.pendingApproval}}</view>
+              <view class="kpi-label">待审批</view>
+            </view>
+            <view class="kpi-item">
+              <view class="kpi-value">{{stats.inventoryAlert}}</view>
+              <view class="kpi-label">库存预警</view>
+            </view>
+            <view class="kpi-item">
+              <view class="kpi-value">{{stats.activeCustomers}}</view>
+              <view class="kpi-label">活跃客户</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 一句话记录 -->
+      <view wx:elif="{{cardMap[item].type === 'sentence'}}" class="card sentence-card">
+        <view class="card-header">
+          <text class="card-title">{{cardMap[item].title}}</text>
+          <text wx:if="{{!isEditing}}" class="card-more">›</text>
+        </view>
+        <view class="card-body">
+          <view class="sentence-hint">🎤 试试说："今天在 A 项目干了 8 个工"</view>
+          <view class="sentence-tip">支持语音和文字快速记账、报销、记工</view>
+        </view>
+      </view>
+
+      <!-- 收支趋势 -->
+      <view wx:elif="{{cardMap[item].type === 'trend'}}" class="card trend-card">
+        <view class="card-header">
+          <text class="card-title">{{cardMap[item].title}}</text>
+          <text wx:if="{{!isEditing}}" class="card-more">›</text>
+        </view>
+        <view class="card-body">
+          <view class="trend-bars">
+            <view class="trend-bar" wx:for="{{[40,65,45,80,55,90,70]}}" wx:key="*this" style="height: {{item}}rpx;"></view>
+          </view>
+          <view class="trend-labels">
+            <text wx:for="{{['一','二','三','四','五','六','日']}}" wx:key="*this">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 列表型卡片 -->
+      <view wx:else class="card list-card">
+        <view class="card-header">
+          <text class="card-title">{{cardMap[item].title}}</text>
+          <text wx:if="{{!isEditing}}" class="card-more">›</text>
+        </view>
+        <view class="card-body">
+          <view wx:if="{{item === 'reimbursement'}}" class="list-row">
+            <view class="list-item">
+              <text>待审批</text>
+              <text class="list-value">{{stats.reimbursePending}}</text>
+            </view>
+            <view class="list-item">
+              <text>已通过</text>
+              <text class="list-value">{{stats.reimburseApproved}}</text>
+            </view>
+            <view class="list-item">
+              <text>已打款</text>
+              <text class="list-value">{{stats.reimbursePaid}}</text>
+            </view>
+          </view>
+          <view wx:else class="list-empty">暂无数据，点击添加</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{isEditing}}" class="restore-bar">
+      <view class="restore-btn" bindtap="restoreLayout">恢复默认布局</view>
+    </view>
+
+    <view wx:if="{{isEditing && hiddenCards.length > 0}}" class="hidden-section">
+      <view class="hidden-title">已隐藏卡片</view>
+      <view class="hidden-list">
+        <view 
+          class="hidden-item"
+          wx:for="{{hiddenCards}}"
+          wx:key="*this"
+          data-key="{{item}}"
+          bindtap="showCard"
+        >
+          <text>{{cardMap[item].title}}</text>
+          <text class="restore-hint">显示</text>
+        </view>
       </view>
     </view>
   </view>

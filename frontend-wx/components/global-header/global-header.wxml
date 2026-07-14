@@ -1,0 +1,17 @@
+<view class="global-header">
+  <view class="brand">
+    <view class="brand-mark">
+      <text class="brand-icon">+</text>
+    </view>
+    <text class="brand-name">{{title || displayBrand}}</text>
+  </view>
+  <view class="quick-links">
+    <view 
+      class="link-block" 
+      wx:for="{{links}}" 
+      wx:key="name"
+      data-path="{{item.path}}"
+      bindtap="onLinkTap"
+    >{{item.name}}</view>
+  </view>
+</view>
