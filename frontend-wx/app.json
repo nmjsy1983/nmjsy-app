@@ -21,19 +21,27 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_active.png"
       },
       {
         "pagePath": "pages/approval/approval",
-        "text": "审批"
+        "text": "审批",
+        "iconPath": "images/approval.png",
+        "selectedIconPath": "images/approval_active.png"
       },
       {
         "pagePath": "pages/data/data",
-        "text": "数据"
+        "text": "数据",
+        "iconPath": "images/data.png",
+        "selectedIconPath": "images/data_active.png"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile_active.png"
       }
     ]
   },
