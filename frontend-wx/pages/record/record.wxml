@@ -1,0 +1,41 @@
+<view class="container">
+  <global-header title="快速记录" />
+
+  <view class="page-content">
+    <view class="record-grid">
+      <view 
+        class="record-item"
+        wx:for="{{buttons}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        data-name="{{item.name}}"
+        bindtap="onButtonTap"
+      >
+        <view class="record-icon" style="background: {{item.bg}}; color: {{item.color}};">{{item.icon}}</view>
+        <view class="record-name">{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="card recent-card">
+      <view class="card-header">
+        <text class="card-title">最近记录</text>
+        <text class="card-more">查看全部 ›</text>
+      </view>
+      <view class="card-body">
+        <view 
+          class="recent-item"
+          wx:for="{{recentRecords}}"
+          wx:key="index"
+          data-index="{{index}}"
+          bindtap="onRecentTap"
+        >
+          <view class="recent-badge">{{item.type}}</view>
+          <view class="recent-info">
+            <view class="recent-desc">{{item.desc}}</view>
+            <view class="recent-time">{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

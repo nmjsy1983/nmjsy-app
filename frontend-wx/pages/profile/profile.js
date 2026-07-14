@@ -29,6 +29,12 @@ Page({
     }
   },
 
+  onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 3 })
+    }
+  },
+
   onMenuTap(e) {
     const key = e.currentTarget.dataset.key
     wx.showToast({ title: `点击了 ${key}`, icon: 'none' })

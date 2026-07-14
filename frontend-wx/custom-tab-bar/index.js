@@ -11,14 +11,14 @@ Component({
         selectedIconPath: '/images/home_active.png'
       },
       {
-        pagePath: '/pages/approval/approval',
-        text: '审批',
+        pagePath: '/pages/record/record',
+        text: '记录',
         iconPath: '/images/approval.png',
         selectedIconPath: '/images/approval_active.png'
       },
       {
-        pagePath: '/pages/data/data',
-        text: '数据',
+        pagePath: '/pages/query/query',
+        text: '查询',
         iconPath: '/images/data.png',
         selectedIconPath: '/images/data_active.png'
       },

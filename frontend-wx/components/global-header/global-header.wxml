@@ -1,17 +1,15 @@
-<view class="global-header">
-  <view class="brand">
-    <view class="brand-mark">
-      <text class="brand-icon">+</text>
+<view class="global-header" style="padding-top: {{safeAreaTop}}px;">
+  <view class="header-inner">
+    <view class="brand">
+      <view class="brand-mark">
+        <text class="brand-icon">+</text>
+      </view>
+      <text class="brand-name">{{title || displayBrand}}</text>
     </view>
-    <text class="brand-name">{{title || displayBrand}}</text>
-  </view>
-  <view class="quick-links">
-    <view 
-      class="link-block" 
-      wx:for="{{links}}" 
-      wx:key="name"
-      data-path="{{item.path}}"
-      bindtap="onLinkTap"
-    >{{item.name}}</view>
+
+    <view class="header-user" style="margin-right: {{capsuleRightGap}}rpx;" bindtap="onUserTap">
+      <view class="user-avatar">{{userName[0]}}</view>
+      <text class="user-name">{{userName}}</text>
+    </view>
   </view>
 </view>

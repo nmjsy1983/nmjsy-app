@@ -1,0 +1,29 @@
+<view class="container">
+  <global-header title="数据查询" />
+
+  <view class="page-content">
+    <view class="search-bar">
+      <view class="search-input">
+        <text class="search-icon">🔍</text>
+        <text class="search-placeholder">搜索项目、人员、单据...</text>
+      </view>
+    </view>
+
+    <view class="query-group" wx:for="{{queryGroups}}" wx:key="title">
+      <view class="query-group-title">{{item.title}}</view>
+      <view class="query-grid">
+        <view 
+          class="query-item"
+          wx:for="{{item.items}}"
+          wx:key="key"
+          wx:for-item="query"
+          data-name="{{query.name}}"
+          bindtap="onItemTap"
+        >
+          <view class="query-icon" style="background: {{query.bg}}; color: {{query.color}};">{{query.icon}}</view>
+          <view class="query-name">{{query.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

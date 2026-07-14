@@ -2,15 +2,17 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  background: var(--bg);
+  border-bottom: 1rpx solid var(--border);
+}
+
+.header-inner {
+  height: 92rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20rpx;
-  height: 92rpx;
   padding: 0 32rpx;
-  padding-top: 88rpx;
-  background: var(--bg);
-  border-bottom: 1rpx solid var(--border);
+  box-sizing: border-box;
 }
 
 .brand {
@@ -21,8 +23,8 @@
 }
 
 .brand-mark {
-  width: 56rpx;
-  height: 56rpx;
+  width: 52rpx;
+  height: 52rpx;
   border-radius: 14rpx;
   background: var(--primary);
   display: flex;
@@ -33,13 +35,13 @@
 
 .brand-icon {
   color: #fff;
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 700;
   line-height: 1;
 }
 
 .brand-name {
-  font-size: 34rpx;
+  font-size: 32rpx;
   font-weight: 800;
   color: var(--text-main);
   width: 4.1em;
@@ -49,32 +51,33 @@
   flex-shrink: 0;
 }
 
-.quick-links {
+.header-user {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 12rpx;
-  flex: 1;
-  min-width: 0;
-}
-
-.link-block {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 72rpx;
-  padding: 10rpx 18rpx;
-  border-radius: 14rpx;
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: 26rpx;
-  font-weight: 600;
-  white-space: nowrap;
   flex-shrink: 0;
 }
 
-.link-block:active {
-  background: var(--primary);
-  color: #ffffff;
-  transform: scale(0.96);
+.user-avatar {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ea580c, #fb923c);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 28rpx;
+  color: var(--text-main);
+  font-weight: 500;
+  max-width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
