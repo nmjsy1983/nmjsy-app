@@ -4,7 +4,7 @@
   <view class="page-content">
     <view class="search-bar">
       <view class="search-input">
-        <text class="search-icon">🔍</text>
+        <text class="search-icon">搜</text>
         <text class="search-placeholder">搜索项目、人员、单据...</text>
       </view>
     </view>

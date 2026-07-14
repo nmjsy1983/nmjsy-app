@@ -3,9 +3,9 @@
 
   <view class="page-content">
     <view class="page-title">
-      <view>
-        <view class="greeting">早安，{{userName}}</view>
-        <view class="date">{{today}}</view>
+      <view class="date-weather">
+        <text class="date-text">{{dateStr}} {{weekStr}}</text>
+        <text class="weather-text">{{weather}}</text>
       </view>
       <view class="edit-btn {{isEditing ? 'active' : ''}}" bindtap="toggleEdit">
         {{isEditing ? '完成' : '编辑'}}
@@ -80,7 +80,7 @@
           <text wx:if="{{!isEditing}}" class="card-more">›</text>
         </view>
         <view class="card-body">
-          <view class="sentence-hint">🎤 试试说："今天在 A 项目干了 8 个工"</view>
+          <view class="sentence-hint"><text class="hint-icon">语</text> 试试说："今天在 A 项目干了 8 个工"</view>
           <view class="sentence-tip">支持语音和文字快速记账、报销、记工</view>
         </view>
       </view>

@@ -14,7 +14,9 @@ const allCardKeys = Object.keys(cardMap)
 Page({
   data: {
     userName: '管理员',
-    today: '',
+    dateStr: '',
+    weekStr: '',
+    weather: '晴 26°C',
     isEditing: false,
     visibleCards: [...allCardKeys],
     hiddenCards: [],
@@ -45,9 +47,12 @@ Page({
 
   updateToday() {
     const d = new Date()
-    const weeks = ['日', '一', '二', '三', '四', '五', '六']
+    const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+    const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
     this.setData({
-      today: `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 星期${weeks[d.getDay()]}`,
+      dateStr: `${months[d.getMonth()]}${d.getDate()}日`,
+      weekStr: weeks[d.getDay()],
+      weather: '晴 26°C',
       userName: '管理员'
     })
   },
